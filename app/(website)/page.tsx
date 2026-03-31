@@ -3,7 +3,7 @@ import { ModeToggle } from "@/components/theme/mode-toggle";
 export default function Home() {
   return (
     <div>
-      Home
+      Home page
       <ModeToggle />
     </div>
   );
