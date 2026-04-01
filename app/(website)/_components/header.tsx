@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { IconCalendar, IconMenu } from "@tabler/icons-react";
 
 import BistroLogo from "@/assets/bistro-logo";
+import { ModeToggle } from "@/components/theme/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -57,9 +58,10 @@ const Header = ({ navigationData, className }: HeaderProps) => {
 
         {/* Actions */}
         <div className="flex gap-4">
+          <ModeToggle />
           <Button
             nativeButton={false}
-            className="rounded-full max-sm:hidden"
+            className="max-sm:hidden"
             render={<a href="#">Book table</a>}
           />
 
@@ -68,7 +70,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
             <Button
               nativeButton={false}
               size="icon"
-              className="rounded-full sm:hidden"
+              className="sm:hidden"
               render={
                 <a href="#">
                   <IconCalendar />
