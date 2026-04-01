@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { IconArrowRight } from "@tabler/icons-react";
@@ -15,13 +16,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
-export type MenuData = {
-  id: number;
-  img: string;
-  imgAlt: string;
-  userAvatar: string;
-  userComment: string;
-};
+import { MenuData } from "../_types";
 
 const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
   const [mainApi, setMainApi] = useState<CarouselApi>();
@@ -132,9 +127,19 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
             }}
           >
             <CarouselContent>
-              {menudata.map((item) => (
+              {menudata.map((item, index) => (
                 <CarouselItem key={item.id} className="flex w-full items-center justify-center">
-                  <img src={item.img} alt={item.imgAlt} className="obeh size-95 object-contain" />
+                  <div className="relative size-95 shrink-0">
+                    <Image
+                      src={item.img}
+                      alt={item.imgAlt}
+                      fill
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      className="object-contain"
+                      sizes="(max-width: 1024px) 100vw, 380px"
+                    />
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -180,7 +185,15 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
                         />
                       </svg>
                     </div>
-                    <img src={item.img} alt={item.imgAlt} className="size-25" />
+                    <div className="relative size-25">
+                      <Image
+                        src={item.img}
+                        alt={item.imgAlt}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1280px) 25vw, 200px"
+                      />
+                    </div>
                   </div>
                 </CarouselItem>
               ))}
@@ -199,10 +212,12 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
                   key={item.id}
                   className="flex h-full min-h-14 w-full justify-center gap-4 px-6 lg:items-center"
                 >
-                  <img
+                  <Image
                     src={item.userAvatar}
                     alt={item.imgAlt}
-                    className="border-background size-10 rounded-full border-4 drop-shadow-lg"
+                    width={40}
+                    height={40}
+                    className="border-background size-10 shrink-0 rounded-full border-4 drop-shadow-lg"
                   />
                   <Separator
                     orientation="vertical"

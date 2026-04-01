@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactElement, ReactNode } from "react";
+import type { ReactElement } from "react";
 
 import { IconChevronRight, IconCircle } from "@tabler/icons-react";
 
@@ -13,24 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export type NavigationItem = {
-  title: string;
-  href: string;
-};
-
-export type NavigationSection = {
-  title: string;
-  icon?: ReactNode;
-} & (
-  | {
-      items: NavigationItem[];
-      href?: never;
-    }
-  | {
-      items?: never;
-      href: string;
-    }
-);
+import { NavigationSection } from "../_types";
 
 type Props = {
   trigger: ReactElement;

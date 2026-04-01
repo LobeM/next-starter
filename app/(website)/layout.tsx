@@ -1,24 +1,6 @@
+import Footer from "./_components/footer";
 import Header from "./_components/header";
-import { NavigationSection } from "./_components/menu-navigation";
-
-const navigationData: NavigationSection[] = [
-  {
-    title: "About Us",
-    href: "#",
-  },
-  {
-    title: "Testimonials",
-    href: "#",
-  },
-  {
-    title: "Contact us",
-    href: "#",
-  },
-  {
-    title: "Offers",
-    href: "#",
-  },
-];
+import { footerData, navigationData } from "./_constants";
 
 export default function Layout({
   children,
@@ -29,7 +11,10 @@ export default function Layout({
     <div className="overflow-x-hidden">
       {/* Header Section */}
       <Header navigationData={navigationData} />
+      {/* Main Section */}
       <main className="flex flex-col pt-17.5">{children}</main>
+      {/* Header Section */}
+      <Footer footerData={footerData} />
     </div>
   );
 }
