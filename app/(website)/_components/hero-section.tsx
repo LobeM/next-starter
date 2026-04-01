@@ -190,6 +190,8 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
                         src={item.img}
                         alt={item.imgAlt}
                         fill
+                        priority={index === 0}
+                        loading={index === 0 ? "eager" : "lazy"}
                         className="object-contain"
                         sizes="(max-width: 640px) 50vw, (max-width: 1280px) 25vw, 200px"
                       />
