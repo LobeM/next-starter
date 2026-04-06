@@ -31,6 +31,11 @@ export const env = createEnv({
           .filter((part) => part.length > 0)
       )
       .pipe(z.array(z.email()).min(1)),
+    DB_MIGRATING: z
+      .string()
+      .refine((s) => s === "true" || s === "false")
+      .transform((s) => s === "true")
+      .optional(),
   },
   client: {
     NEXT_PUBLIC_API_URL: z.url(),
@@ -58,6 +63,7 @@ export const env = createEnv({
     NODEMAILER_USER: process.env.NODEMAILER_USER,
     NODEMAILER_APP_PASSWORD: process.env.NODEMAILER_APP_PASSWORD,
     ADMIN_EMAILS: process.env.ADMIN_EMAILS,
+    DB_MIGRATING: process.env.DB_MIGRATING,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
   /* eslint-enable n/no-process-env */
