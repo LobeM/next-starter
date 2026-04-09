@@ -10,7 +10,8 @@ import { env } from "@/env/server";
 
 import { hashPassword, verifyPassword } from "./argon2";
 import { ac, roles } from "./permissions";
-import { VALID_DOMAINS, normalizeName } from "./utils";
+import { normalizeName } from "./utils";
+import { VALID_DOMAINS } from "./valid-domains";
 
 const options = {
   database: drizzleAdapter(db, {
