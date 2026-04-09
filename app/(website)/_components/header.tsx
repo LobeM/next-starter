@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { IconCalendar, IconMenu } from "@tabler/icons-react";
@@ -61,8 +62,14 @@ const Header = ({ navigationData, className }: HeaderProps) => {
           <ModeToggle />
           <Button
             nativeButton={false}
+            variant="outline"
             className="max-sm:hidden"
-            render={<a href="#">Book table</a>}
+            render={<Link href="/sign-in">Sign in</Link>}
+          />
+          <Button
+            nativeButton={false}
+            className="max-sm:hidden"
+            render={<Link href="/sign-in">Get started</Link>}
           />
 
           {/* Navigation for small screens */}
@@ -72,12 +79,12 @@ const Header = ({ navigationData, className }: HeaderProps) => {
               size="icon"
               className="sm:hidden"
               render={
-                <a href="#">
+                <Link href="/sign-in">
                   <IconCalendar />
-                  <span className="sr-only">Book table</span>
-                </a>
+                  <span className="sr-only">Sign in</span>
+                </Link>
               }
-            ></Button>
+            />
 
             <MenuDropdown
               align="end"
