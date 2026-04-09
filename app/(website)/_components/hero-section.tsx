@@ -30,15 +30,24 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
     }
 
     setCurrent(mainApi.selectedScrollSnap());
-    mainApi.on("select", () => {
+
+    const onSelect = () => {
       const selectedIndex = mainApi.selectedScrollSnap();
 
       setCurrent(selectedIndex);
 
-      // Sync all carousels with main carousel
-      thumbApi?.scrollTo(selectedIndex);
-      commentsApi?.scrollTo(selectedIndex);
-    });
+      if (thumbApi && thumbApi.selectedScrollSnap() !== selectedIndex) {
+        thumbApi.scrollTo(selectedIndex);
+      }
+      if (commentsApi && commentsApi.selectedScrollSnap() !== selectedIndex) {
+        commentsApi.scrollTo(selectedIndex);
+      }
+    };
+
+    mainApi.on("select", onSelect);
+    return () => {
+      mainApi.off("select", onSelect);
+    };
   }, [mainApi, thumbApi, commentsApi]);
 
   useEffect(() => {
@@ -46,15 +55,23 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
       return;
     }
 
-    thumbApi.on("select", () => {
+    const onSelect = () => {
       const selectedIndex = thumbApi.selectedScrollSnap();
 
       setCurrent(selectedIndex);
 
-      // Sync main and comments carousel with thumbnail carousel
-      mainApi?.scrollTo(selectedIndex);
-      commentsApi?.scrollTo(selectedIndex);
-    });
+      if (mainApi && mainApi.selectedScrollSnap() !== selectedIndex) {
+        mainApi.scrollTo(selectedIndex);
+      }
+      if (commentsApi && commentsApi.selectedScrollSnap() !== selectedIndex) {
+        commentsApi.scrollTo(selectedIndex);
+      }
+    };
+
+    thumbApi.on("select", onSelect);
+    return () => {
+      thumbApi.off("select", onSelect);
+    };
   }, [thumbApi, mainApi, commentsApi]);
 
   useEffect(() => {
@@ -62,15 +79,23 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
       return;
     }
 
-    commentsApi.on("select", () => {
+    const onSelect = () => {
       const selectedIndex = commentsApi.selectedScrollSnap();
 
       setCurrent(selectedIndex);
 
-      // Sync main and thumbnail carousel with comments carousel
-      mainApi?.scrollTo(selectedIndex);
-      thumbApi?.scrollTo(selectedIndex);
-    });
+      if (mainApi && mainApi.selectedScrollSnap() !== selectedIndex) {
+        mainApi.scrollTo(selectedIndex);
+      }
+      if (thumbApi && thumbApi.selectedScrollSnap() !== selectedIndex) {
+        thumbApi.scrollTo(selectedIndex);
+      }
+    };
+
+    commentsApi.on("select", onSelect);
+    return () => {
+      commentsApi.off("select", onSelect);
+    };
   }, [commentsApi, mainApi, thumbApi]);
 
   const handleThumbClick = useCallback(
