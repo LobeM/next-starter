@@ -1,103 +1,145 @@
-import { FooterItem, NavigationSection } from "../_types";
-
-export const navigationData: NavigationSection[] = [
+export const footerSections = [
   {
-    title: "About Us",
-    href: "#",
-  },
-  {
-    title: "Testimonials",
-    href: "#",
-  },
-  {
-    title: "Contact us",
-    href: "#",
-  },
-  {
-    title: "Offers",
-    href: "#",
-  },
-];
-
-export const menudata = [
-  {
-    id: 1,
-    img: "https://cdn.shadcnstudio.com/ss-assets/template/landing-page/bistro/image-18.png",
-    imgAlt: "plate-1",
-    userComment:
-      "The ambiance is perfect and the food is absolutely delicious. Highly recommended!",
-    userAvatar: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-56.png",
-  },
-  {
-    id: 2,
-    img: "https://cdn.shadcnstudio.com/ss-assets/template/landing-page/bistro/image-19.png",
-    imgAlt: "plate-2",
-    userComment:
-      "Best dining experience in town. The staff is friendly and the menu is exceptional.",
-    userAvatar: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-46.png",
-  },
-  {
-    id: 3,
-    img: "https://cdn.shadcnstudio.com/ss-assets/template/landing-page/bistro/image-20.png",
-    imgAlt: "plate-3",
-    userComment: "Every dish is crafted with care. This place never disappoints!",
-    userAvatar: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-57.png",
-  },
-  {
-    id: 4,
-    img: "https://cdn.shadcnstudio.com/ss-assets/template/landing-page/bistro/image-05.png",
-    imgAlt: "plate-4",
-    userComment: "Great atmosphere and incredible flavors. A must-visit restaurant!",
-    userAvatar: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-58.png",
-  },
-  {
-    id: 5,
-    img: "https://cdn.shadcnstudio.com/ss-assets/template/landing-page/bistro/image-20.png",
-    imgAlt: "plate-3",
-    userComment: "Every dish is crafted with care. This place never disappoints!",
-    userAvatar: "https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-57.png",
-  },
-];
-
-export const footerData: FooterItem[] = [
-  {
-    title: "Sitemap",
+    title: "Product",
     links: [
       {
-        title: "Contact us",
+        title: "Overview",
         href: "#",
       },
       {
-        title: "About us",
+        title: "Features",
         href: "#",
       },
       {
-        title: "Work",
+        title: "Solutions",
         href: "#",
       },
       {
-        title: "Services",
+        title: "Tutorials",
         href: "#",
       },
       {
         title: "Pricing",
         href: "#",
       },
+      {
+        title: "Releases",
+        href: "#",
+      },
     ],
   },
   {
-    title: "Other Pages",
+    title: "Company",
     links: [
       {
-        title: "Error 404",
+        title: "About us",
         href: "#",
       },
       {
-        title: "Terms & Conditions",
+        title: "Careers",
         href: "#",
       },
       {
-        title: "Privacy Policy",
+        title: "Press",
+        href: "#",
+      },
+      {
+        title: "News",
+        href: "#",
+      },
+      {
+        title: "Media kit",
+        href: "#",
+      },
+      {
+        title: "Contact",
+        href: "#",
+      },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      {
+        title: "Blog",
+        href: "#",
+      },
+      {
+        title: "Newsletter",
+        href: "#",
+      },
+      {
+        title: "Events",
+        href: "#",
+      },
+      {
+        title: "Help centre",
+        href: "#",
+      },
+      {
+        title: "Tutorials",
+        href: "#",
+      },
+      {
+        title: "Support",
+        href: "#",
+      },
+    ],
+  },
+  {
+    title: "Social",
+    links: [
+      {
+        title: "Twitter",
+        href: "#",
+      },
+      {
+        title: "LinkedIn",
+        href: "#",
+      },
+      {
+        title: "Facebook",
+        href: "#",
+      },
+      {
+        title: "GitHub",
+        href: "#",
+      },
+      {
+        title: "AngelList",
+        href: "#",
+      },
+      {
+        title: "Dribbble",
+        href: "#",
+      },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      {
+        title: "Terms",
+        href: "#",
+      },
+      {
+        title: "Privacy",
+        href: "#",
+      },
+      {
+        title: "Cookies",
+        href: "#",
+      },
+      {
+        title: "Licenses",
+        href: "#",
+      },
+      {
+        title: "Settings",
+        href: "#",
+      },
+      {
+        title: "Contact",
         href: "#",
       },
     ],

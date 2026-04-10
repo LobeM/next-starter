@@ -1,6 +1,6 @@
 import { BetterAuthOptions, betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { APIError, createAuthMiddleware } from "better-auth/api";
+import { createAuthMiddleware } from "better-auth/api";
 import { nextCookies } from "better-auth/next-js";
 import { admin, customSession, magicLink } from "better-auth/plugins";
 
@@ -11,7 +11,6 @@ import { env } from "@/env/server";
 import { hashPassword, verifyPassword } from "./argon2";
 import { ac, roles } from "./permissions";
 import { normalizeName } from "./utils";
-import { VALID_DOMAINS } from "./valid-domains";
 
 const options = {
   database: drizzleAdapter(db, {
@@ -70,14 +69,14 @@ const options = {
   hooks: {
     before: createAuthMiddleware(async (ctx) => {
       if (ctx.path === "/sign-up/email") {
-        const email = String(ctx.body.email);
-        const domain = email.split("@")[1].toLocaleLowerCase();
+        // const email = String(ctx.body.email);
+        // const domain = email.split("@")[1].toLocaleLowerCase();
 
-        if (!VALID_DOMAINS().includes(domain)) {
-          throw new APIError("BAD_REQUEST", {
-            message: "Invalid domain. Please use a valid email.",
-          });
-        }
+        // if (!VALID_DOMAINS().includes(domain)) {
+        //   throw new APIError("BAD_REQUEST", {
+        //     message: "Invalid domain. Please use a valid email.",
+        //   });
+        // }
 
         const name = normalizeName(ctx.body.name);
 

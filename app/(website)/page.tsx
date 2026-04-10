@@ -1,10 +1,9 @@
-import HeroSection from "./_components/hero-section";
-import { menudata } from "./_constants";
+import Hero from "./_components/hero";
 
 export default function Home() {
   return (
-    <div>
-      <HeroSection menudata={menudata} />
-    </div>
+    <>
+      <Hero />
+    </>
   );
 }

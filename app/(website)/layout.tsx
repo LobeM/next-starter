@@ -1,6 +1,5 @@
 import Footer from "./_components/footer";
-import Header from "./_components/header";
-import { footerData, navigationData } from "./_constants";
+import { Navbar } from "./_components/navbar";
 
 export default function Layout({
   children,
@@ -9,12 +8,9 @@ export default function Layout({
 }>) {
   return (
     <div className="overflow-x-hidden">
-      {/* Header Section */}
-      <Header navigationData={navigationData} />
-      {/* Main Section */}
-      <main className="flex flex-col pt-17.5">{children}</main>
-      {/* Header Section */}
-      <Footer footerData={footerData} />
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
     </div>
   );
 }
