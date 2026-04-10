@@ -60,8 +60,8 @@ const Footer = () => {
         {/* Copyright */}
         <span className="text-muted-foreground text-center xs:text-start">
           &copy; {new Date().getFullYear()}{" "}
-          <Link href="https://shadcnui-blocks.com" target="_blank">
-            Shadcn UI Blocks
+          <Link href="https://github.com/lobem" target="_blank">
+            Next.js Starter
           </Link>
           . All rights reserved.
         </span>
