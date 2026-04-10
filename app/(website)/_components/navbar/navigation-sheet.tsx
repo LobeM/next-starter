@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { IconMenu } from "@tabler/icons-react";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -18,10 +20,17 @@ export const NavigationSheet = () => {
         <NavMenu orientation="vertical" className="mt-12" />
 
         <div className="mt-8 space-y-4">
-          <Button variant="outline" className="w-full sm:hidden">
-            Sign In
-          </Button>
-          <Button className="w-full sm:hidden">Get Started</Button>
+          <Button
+            nativeButton={false}
+            variant="outline"
+            className="w-full sm:hidden"
+            render={<Link href="/sign-in">Sign In</Link>}
+          />
+          <Button
+            nativeButton={false}
+            className="w-full sm:hidden"
+            render={<Link href="/sign-in">Get Started</Link>}
+          />
         </div>
       </SheetContent>
     </Sheet>
