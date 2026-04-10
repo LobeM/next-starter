@@ -13,7 +13,7 @@ export const NavigationSheet = () => {
       <SheetTrigger className={buttonVariants({ variant: "outline", size: "icon" })}>
         <IconMenu />
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="p-6">
         <Logo />
         <NavMenu orientation="vertical" className="mt-12" />
 
@@ -21,7 +21,7 @@ export const NavigationSheet = () => {
           <Button variant="outline" className="w-full sm:hidden">
             Sign In
           </Button>
-          <Button className="w-full xs:hidden">Get Started</Button>
+          <Button className="w-full sm:hidden">Get Started</Button>
         </div>
       </SheetContent>
     </Sheet>

@@ -19,7 +19,7 @@ const Navbar = () => {
           <Button variant="outline" className="hidden sm:inline-flex">
             Sign In
           </Button>
-          <Button className="hidden sm:inline-flex">Get Started</Button>
+          <Button className="inline-flex">Get Started</Button>
 
           {/* Mobile Menu */}
           <div className="md:hidden">

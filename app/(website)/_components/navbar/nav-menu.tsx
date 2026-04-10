@@ -8,6 +8,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -18,8 +19,17 @@ const navItems = [
 ] as const;
 
 export const NavMenu = (props: NavigationMenuRootProps) => (
-  <NavigationMenu {...props}>
-    <NavigationMenuList className="gap-6 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start">
+  <NavigationMenu
+    {...props}
+    className={cn(props.className, {
+      "max-w-none flex-none justify-start": props.orientation === "vertical",
+    })}
+  >
+    <NavigationMenuList
+      className={cn("gap-6 space-x-0", {
+        "flex-none flex-col items-start justify-start": props.orientation === "vertical",
+      })}
+    >
       {navItems.map((item) => (
         <NavigationMenuItem key={item.href}>
           <NavigationMenuLink render={<Link href={item.href}>{item.label}</Link>} />
