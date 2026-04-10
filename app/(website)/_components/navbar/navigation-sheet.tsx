@@ -2,10 +2,10 @@ import Link from "next/link";
 
 import { IconMenu } from "@tabler/icons-react";
 
+import { Logo } from "@/components/logo";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
-import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 
 export const NavigationSheet = () => {
@@ -29,7 +29,7 @@ export const NavigationSheet = () => {
           <Button
             nativeButton={false}
             className="w-full sm:hidden"
-            render={<Link href="/sign-in">Get Started</Link>}
+            render={<Link href="/sign-up">Get Started</Link>}
           />
         </div>
       </SheetContent>

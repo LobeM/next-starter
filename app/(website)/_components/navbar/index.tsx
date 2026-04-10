@@ -1,9 +1,9 @@
 import Link from "next/link";
 
+import { Logo } from "@/components/logo";
 import ThemeToggle from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 
-import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 
@@ -28,7 +28,7 @@ const Navbar = () => {
           <Button
             nativeButton={false}
             className="inline-flex"
-            render={<Link href="/sign-in">Get Started</Link>}
+            render={<Link href="/sign-up">Get Started</Link>}
           />
 
           {/* Mobile Menu */}
