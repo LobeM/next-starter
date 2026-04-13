@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
-export default function ForgotPasswordForm() {
+export default function ResendVerificationEmailForm() {
   return (
     <form>
       <FieldGroup>
@@ -11,7 +11,7 @@ export default function ForgotPasswordForm() {
           <Input id="email" type="email" placeholder="m@example.com" required />
         </Field>
         <Field>
-          <Button type="submit">Send Reset Link</Button>
+          <Button type="submit">Resend Verification Email</Button>
         </Field>
       </FieldGroup>
     </form>
