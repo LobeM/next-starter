@@ -32,7 +32,13 @@ const Hero = () => {
           </div>
         </div>
         <div className="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square">
-          <Image src="/placeholder.svg" fill alt="" className="object-cover rounded-xl" />
+          <Image
+            src="/placeholder.svg"
+            fill
+            alt=""
+            loading="eager"
+            className="object-cover rounded-xl"
+          />
         </div>
       </div>
     </div>
