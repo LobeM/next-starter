@@ -6,7 +6,7 @@ import {
 } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 
-import { env } from "@/env/server";
+import { env } from "@/env/client";
 import type { auth } from "@/lib/auth";
 import { ac, roles } from "@/lib/permissions";
 

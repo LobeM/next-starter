@@ -37,9 +37,6 @@ export const env = createEnv({
       .transform((s) => s === "true")
       .optional(),
   },
-  client: {
-    NEXT_PUBLIC_API_URL: z.url(),
-  },
   onValidationError: (issues) => {
     console.error("❌ Invalid environment variables:", issues.map((i) => i.path).flat());
     process.exit(1);
@@ -64,7 +61,6 @@ export const env = createEnv({
     NODEMAILER_APP_PASSWORD: process.env.NODEMAILER_APP_PASSWORD,
     ADMIN_EMAILS: process.env.ADMIN_EMAILS,
     DB_MIGRATING: process.env.DB_MIGRATING,
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
   /* eslint-enable n/no-process-env */
 });
