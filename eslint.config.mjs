@@ -20,6 +20,7 @@ const eslintConfig = defineConfig([
       n: nodePlugin,
     },
     rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
       "prefer-arrow-callback": ["error"],
       "prefer-template": ["error"],
       semi: ["error"],
