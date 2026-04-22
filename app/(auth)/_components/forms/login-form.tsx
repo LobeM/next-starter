@@ -1,37 +1,64 @@
+"use client";
+
 import Link from "next/link";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Control, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import z from "zod";
+
+import FormGenerator from "@/components/forms/form-generator";
 import { Button } from "@/components/ui/button";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldSeparator,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import { Field, FieldDescription, FieldGroup, FieldSeparator } from "@/components/ui/field";
 
 import SignInOauthButton from "../sign-in-oauth-button";
 
+const formSchema = z.object({
+  email: z.email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters long"),
+});
+
 export default function LoginForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    // zodResolver is not typed correctly, so we need to cast it to any
+    resolver: zodResolver(formSchema as any),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    toast.success("Login successful");
+  }
+
   return (
-    <form>
+    <form onSubmit={form.handleSubmit(onSubmit)}>
       <FieldGroup>
-        <Field>
-          <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input id="email" type="email" placeholder="m@example.com" required />
-        </Field>
-        <Field>
-          <div className="flex items-center">
-            <FieldLabel htmlFor="password">Password</FieldLabel>
+        <FormGenerator
+          type="email"
+          inputType="input"
+          name="email"
+          label="Email"
+          placeholder="m@example.com"
+          control={form.control as Control<any>}
+        />
+        <FormGenerator
+          type="password"
+          inputType="input"
+          name="password"
+          label="Password"
+          autoComplete="current-password"
+          control={form.control as Control<any>}
+          labelRightContent={
             <Link
               href="/forgot-password"
               className="ml-auto text-sm underline-offset-4 hover:underline"
             >
               Forgot your password?
             </Link>
-          </div>
-          <Input id="password" type="password" required />
-        </Field>
+          }
+        />
         <Field>
           <Button type="submit">Login</Button>
         </Field>
