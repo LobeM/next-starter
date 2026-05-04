@@ -11,6 +11,7 @@ import FormGenerator from "@/components/forms/form-generator";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup, FieldSeparator } from "@/components/ui/field";
 
+import { signInEmailAction } from "../../actions";
 import SignInOauthButton from "../sign-in-oauth-button";
 
 const formSchema = z.object({
@@ -28,8 +29,13 @@ export default function LoginForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast.success("Login successful");
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const result = await signInEmailAction(values.email, values.password);
+    if (result.error) {
+      toast.error(result.error);
+    } else {
+      toast.success("Login successful");
+    }
   }
 
   return (

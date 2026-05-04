@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup, FieldSeparator } from "@/components/ui/field";
 import { cn } from "@/lib/utils";
 
+import { signUpEmailAction } from "../../actions";
 import SignInOauthButton from "../sign-in-oauth-button";
 
 const formSchema = z
@@ -38,8 +39,13 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"form">
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast.success("Account created");
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const result = await signUpEmailAction(values.name, values.email, values.password);
+    if (result.error) {
+      toast.error(result.error);
+    } else {
+      toast.success("Sign up successful");
+    }
   }
 
   return (

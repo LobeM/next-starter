@@ -1,8 +1,18 @@
+import { redirect } from "next/navigation";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 import ResetPasswordForm from "../_components/forms/reset-password-form";
 
-export default function ResetPasswordPage() {
+interface PageProps {
+  searchParams: Promise<{ token: string }>;
+}
+
+export default async function ResetPasswordPage({ searchParams }: PageProps) {
+  const { token } = await searchParams;
+
+  if (!token) redirect("/sign-in");
+
   return (
     <div className="flex flex-col gap-6">
       <Card>
@@ -11,7 +21,7 @@ export default function ResetPasswordPage() {
           <CardDescription>Enter your new password below</CardDescription>
         </CardHeader>
         <CardContent className="p-6">
-          <ResetPasswordForm />
+          <ResetPasswordForm token={token} />
         </CardContent>
       </Card>
     </div>

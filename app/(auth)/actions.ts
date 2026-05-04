@@ -11,11 +11,8 @@ import { db } from "@/db";
 import { user } from "@/db/schema/auth";
 import { ErrorCode, auth } from "@/lib/auth";
 
-export async function signInEmailAction(formData: FormData) {
-  const email = String(formData.get("email"));
+export async function signInEmailAction(email: string, password: string) {
   if (!email) return { error: "Please enter your email" };
-
-  const password = String(formData.get("password"));
   if (!password) return { error: "Please enter your password" };
 
   try {
@@ -43,14 +40,7 @@ export async function signInEmailAction(formData: FormData) {
   }
 }
 
-export async function signUpEmailAction(formData: FormData) {
-  const name = formData.get("name") as string;
-  if (!name) return { error: "Name is required" };
-  const email = formData.get("email") as string;
-  if (!email) return { error: "Email is required" };
-  const password = formData.get("password") as string;
-  if (!password) return { error: "Password is required" };
-
+export async function signUpEmailAction(name: string, email: string, password: string) {
   try {
     await auth.api.signUpEmail({
       body: {
@@ -71,14 +61,13 @@ export async function signUpEmailAction(formData: FormData) {
           return { error: err.message };
       }
     }
+
+    return { error: "Internal Server Error" };
   }
 }
 
-export async function changePasswordAction(formData: FormData) {
-  const currentPassword = String(formData.get("currentPassword"));
+export async function changePasswordAction(currentPassword: string, newPassword: string) {
   if (!currentPassword) return { error: "Please enter your current password" };
-
-  const newPassword = String(formData.get("newPassword"));
   if (!newPassword) return { error: "Please enter your new password" };
 
   try {
