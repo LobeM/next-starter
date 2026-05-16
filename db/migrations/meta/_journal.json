@@ -15,6 +15,13 @@
       "when": 1775553650424,
       "tag": "0001_chunky_dreadnoughts",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1778969062911,
+      "tag": "0002_fresh_morph",
+      "breakpoints": true
     }
   ]
 }
