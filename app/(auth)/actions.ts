@@ -53,7 +53,7 @@ export async function signUpEmailAction(name: string, email: string, password: s
     return { error: null };
   } catch (err) {
     if (err instanceof APIError) {
-      const errCode = err.body ? (err.body.error.code as ErrorCode) : "UNKNOWN";
+      const errCode = err.body ? (err.body.code as ErrorCode) : "UNKNOWN";
       switch (errCode) {
         case "USER_ALREADY_EXISTS":
           return { error: "Failed to create user. Please try again." };
