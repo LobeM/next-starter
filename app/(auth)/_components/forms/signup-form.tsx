@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import router from "next/router";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Control, useForm } from "react-hook-form";
@@ -45,6 +46,7 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"form">
       toast.error(result.error);
     } else {
       toast.success("Sign up successful");
+      router.push("/verify");
     }
   }
 
