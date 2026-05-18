@@ -41,6 +41,7 @@ export default function ResendVerificationEmailForm() {
           setIsLoading(false);
         },
         onError: (ctx) => {
+          console.log("API ERROR: ", ctx);
           toast.error(ctx.error.message);
         },
         onSuccess: () => {

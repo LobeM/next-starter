@@ -1,8 +1,18 @@
+import { redirect } from "next/navigation";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 import ResendVerificationEmailForm from "../_components/forms/resend-verification-email-form";
 
-const Verify = () => {
+interface PageProps {
+  searchParams: Promise<{ error: string }>;
+}
+
+const Verify = async ({ searchParams }: PageProps) => {
+  const error = (await searchParams).error;
+
+  if (!error) redirect("/dashboard");
+
   return (
     <div className="flex flex-col gap-6">
       <Card>
