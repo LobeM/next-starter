@@ -23,6 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { APP_NAME } from "@/lib/constants";
 
 import { NavMain } from "./nav-main";
 import { NavSecondary } from "./nav-secondary";
@@ -81,7 +82,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               render={
                 <Link href="/">
                   <IconInnerShadowTop className="size-5!" />
-                  <span className="text-base font-semibold">MediTrack</span>
+                  <span className="text-base font-semibold">{APP_NAME}</span>
                 </Link>
               }
             />
