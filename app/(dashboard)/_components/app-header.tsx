@@ -24,7 +24,7 @@ export function AppHeader() {
                 target="_blank"
                 className="dark:text-foreground"
               >
-                GitLab
+                GitHub
               </Link>
             }
           ></Button>
