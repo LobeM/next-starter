@@ -12,10 +12,9 @@ import z from "zod";
 import FormGenerator from "@/components/forms/form-generator";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldGroup, FieldSeparator } from "@/components/ui/field";
-import { sendVerificationEmail } from "@/lib/auth-client";
+import { signUp } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 
-import { signUpEmailAction } from "../../actions";
 import SignInOauthButton from "../sign-in-oauth-button";
 
 const formSchema = z
@@ -48,29 +47,21 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"form">
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
 
-    const result = await signUpEmailAction(values.name, values.email, values.password);
+    const result = await signUp.email({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
+
     if (result.error) {
       setIsLoading(false);
-      toast.error(result.error);
-    } else {
-      await sendVerificationEmail({
-        email: values.email,
-        callbackURL: "/verify",
-        fetchOptions: {
-          onResponse: () => {
-            setIsLoading(false);
-          },
-          onError: (ctx) => {
-            console.log("API ERROR: ", ctx);
-            toast.error(ctx.error.message);
-          },
-          onSuccess: () => {
-            toast.success("Account created successfully.");
-            router.push("/sign-up/success");
-          },
-        },
-      });
+      toast.error(result.error.message);
+      return;
     }
+
+    setIsLoading(false);
+    toast.success("Account created successfully.");
+    router.push("/sign-up/success");
   }
 
   return (
